@@ -19,7 +19,7 @@ ft_strdup:
     
 .error:
     pop rdi
-    xor rax, rax        ; = mov rax, 0 mais coute 3oct au lieu de 7pour mov
+    xor rax, rax        ; = mov rax, 0 but cost 3oct compare to 7 for mov
     ret
 
 section .note.GNU-stack noalloc noexec nowrite progbits

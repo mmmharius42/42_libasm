@@ -1,4 +1,4 @@
-default rel                             ; adresse absolue -> relative : programme peux etre charger n importe ou pas fixe
+default rel                             ; adresse absolue -> relative : program can be lunch every where
 section .text
 global ft_write
 extern __errno_location
@@ -14,7 +14,7 @@ ft_write:
 .error:
     neg rax
     push rax
-    call __errno_location wrt ..plt     ; wrt ..plt specifie l utilisation de plt (sinon on trouve pas errno..)
+    call __errno_location wrt ..plt     ; wrt ..plt if not his we dont find errno
     pop rdx
     mov [rax], rdx
     mov rax, -1
