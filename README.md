@@ -2,9 +2,9 @@
 
 ---
 
-## Main Registers (64-bit)
+## Main Registers (64-bits)
 
-| Register      | Role                                           |
+| Register      | Role                                          |
 |---            |---                                            |
 | `rax`         | Return value + syscall number                 |
 | `rdi`         | 1st argument                                  |
@@ -13,7 +13,29 @@
 | `rbx`         | Preserved register — must be saved before use |
 | `rsp / rbp`   | Stack pointer / base pointer                  |
 
-> `al` / `bl` = lower 8-bit part of `rax` / `rbx` (used to read a `char`)
+
+---
+
+## All Registers (64-bits - 8bits)
+
+| 64 bits   | 32 bits   | 16 bits   | high 8 bits   | low 8 bits    |
+|---        |---        |---        |---            |---            |
+| `rax`     | `eax`     | `ax`      | `ah`          | `al`          |
+| `rbx`     | `ebx`     | `bx`      | `bh`          | `bl`          |
+| `rcx`     | `ecx`     | `cx`      | `ch`          | `cl`          |
+| `rdx`     | `edx`     | `dx`      | `dh`          | `dl`          |
+| `rsi`     | `esi`     | `si`      | —             | `sil`         |
+| `rdi`     | `edi`     | `di`      | —             | `dil`         |
+| `rbp`     | `ebp`     | `bp`      | —             | `bpl`         |
+| `rsp`     | `esp`     | `sp`      | —             | `spl`         |
+| `r8`      | `r8d`     | `r8w`     | —             | `r8b`         |
+| `r9`      | `r9d`     | `r9w`     | —             | `r9b`         |
+| `r10`     | `r10d`    | `r10w`    | —             | `r10b`        |
+| `r11`     | `r11d`    | `r11w`    | —             | `r11b`        |
+| `r12`     | `r12d`    | `r12w`    | —             | `r12b`        |
+| `r13`     | `r13d`    | `r13w`    | —             | `r13b`        |
+| `r14`     | `r14d`    | `r14w`    | —             | `r14b`        |
+| `r15`     | `r15d`    | `r15w`    | —             | `r15b`        |
 
 ---
 
@@ -38,12 +60,12 @@
 
 ## Jump Instructions
 
-| Instruction | Jumps when… | Flag condition |
-|---|---|---|
-| `jmp label` | Always | — |
-| `je label` | Equal / zero | ZF=1 |
-| `jne label` | Not equal | ZF=0 |
-| `jl label` | Less (signed) | SF≠OF |
+| Instruction   | Jumps when…   | Flag condition    |
+|---            |---            |---                |
+| `jmp label`   | Always        | —                 |
+| `je label`    | Equal / zero  | ZF=1              |
+| `jne label`   | Not equal     | ZF=0              |
+| `jl label`    | Less (signed) | SF≠OF             |
 
 > Flags are set by `cmp a, b` which computes `a - b` without storing the result.
 
@@ -51,7 +73,7 @@
 ## Syscalls Used
 
 | rax | syscall | args                        |
-| --- | ------- | --------------------------- |
+|---  |---      |---                          |
 | `0` | read    | rdi=fd, rsi=buf, rdx=count  |
 | `1` | write   | rdi=fd, rsi=buf, rdx=nbytes |
 
@@ -97,11 +119,6 @@ We store it in `errno` and return `-1`.
 make           # compile libasm.a
 make main      # compile + link the test main
 ./libasm       # run the tests
-```
-
-```bash
-make re && make main && ./libasm
-# clean + rebuild + test
 ```
 
 ---
