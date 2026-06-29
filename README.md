@@ -33,6 +33,7 @@ make        # build libasm.a
 make clean  # remove object files
 make fclean # remove object files and libasm.a
 make re     # full rebuild
+make main   # build main for test
 ```
 
 To test:
@@ -43,7 +44,7 @@ make && gcc main.c -L. -lasm -o test && ./test
 
 ## Resources
 
-- [Cours nasm](https://lacl.u-pec.fr/tan/asm.pdf)
+- [Language Assembleur Intel 64bits](https://lacl.u-pec.fr/tan/asm.pdf)
 - [NASM Documentation](https://www.nasm.us/doc/)
 - [x86-64 Calling Convention (System V ABI)](https://refspecs.linuxbase.org/elf/x86_64-abi-0.99.pdf)
 - [Linux Syscall Table x86-64](https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/)

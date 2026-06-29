@@ -1,4 +1,4 @@
-default rel                             ; adresse absolue -> relative : program can be lunch every where
+default rel                             ; addr absolue -> relative : program can be lunch every where
 section .text
 global ft_write
 extern __errno_location
@@ -14,9 +14,8 @@ ft_write:
 .error:
     neg rax
     push rax
-    call __errno_location wrt ..plt     ; wrt ..plt if not his we dont find errno
-    pop rdx
-    mov [rax], rdx
+    call __errno_location wrt ..plt
+    pop qword [rax]
     mov rax, -1
     ret
 

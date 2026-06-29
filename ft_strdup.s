@@ -5,21 +5,23 @@ extern ft_strlen
 extern ft_strcpy
 
 ft_strdup:
-    push rdi
+    push rbx
+    mov rbx, rdi
     call ft_strlen
     inc rax
     mov rdi, rax
-    call malloc wrt ..plt        ; rax -> adresse de l'endroit malloc
+    call malloc wrt ..plt
     cmp rax, 0
     je .error
     mov rdi, rax
-    pop rsi
+    mov rsi, rbx
     call ft_strcpy
+    pop rbx
     ret
-    
+
 .error:
-    pop rdi
-    xor rax, rax        ; = mov rax, 0 but cost 3oct compare to 7 for mov
+    pop rbx
+    xor rax, rax
     ret
 
 section .note.GNU-stack noalloc noexec nowrite progbits
