@@ -30,7 +30,6 @@ Get familiar with assembly language by reimplementing low-level functions: strin
 
 ```bash
 make        # build libasm.a
-make bonus  # build with bonus functions
 make clean  # remove object files
 make fclean # remove object files and libasm.a
 make re     # full rebuild
